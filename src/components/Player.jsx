@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Player({ initialName, symbol, isActive}) {
+export default function Player({ initialName, symbol, isActive, onPlayerNameChange}) {
     
     const [ playerName, setPlayerName ] = useState(initialName);
     const [ isEditing, setIsEditing ] = useState(false);
@@ -15,6 +15,7 @@ export default function Player({ initialName, symbol, isActive}) {
         // setIsEditing(!isEditing); // ambiguos behaviour
         setIsEditing((editing) => !editing); //best practice is pass the function.
         // setIsEditing((editing) => !editing);
+        onPlayerNameChange(symbol, playerName);
     }
 
     function handleInputChange(event) {
